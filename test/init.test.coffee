@@ -20,7 +20,7 @@ before (done) ->
   if (!fs.existsSync(SCOPE.TEST))
     scripts.newBase ->
       scripts.link SCOPE.LINK
-      forceRequire scope: SCOPE.TEST, name: dependency  for dependency in SCOPE.DEPENDENCIES
+      forceRequire scope: SCOPE.TEST, name: dependency, production: true for dependency in SCOPE.DEPENDENCIES
       scripts.writeModuleFile pkg.name
       scripts.lift SCOPE.TEST, opts, done
   else
