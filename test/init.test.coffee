@@ -1,28 +1,25 @@
 ## -- Dependencies -----------------------------------------------------------------------
 
-fs           = require 'fs'
 pkg          = require '../package.json'
 sailor       = require 'sailorjs'
 scripts      = sailor.scripts
-forceRequire = require 'force-require'
 
 ## -- Setup ------------------------------------------------------------------------------
 
-opts =
+SCOPE =
+  PATH : process.cwd()
+  NAME : 'testApp'
+  TMP  : '.tmp'
+
+sailsOptions =
   log: level: "silent"
 
-SCOPE =
-  TEST         : "#{process.cwd()}/testApp"
-  LINK         : "#{process.cwd()}/testApp/node_modules/#{pkg.name}"
-  DEPENDENCIES : ['sailor-module-user']
-
 before (done) ->
-  if (!fs.existsSync(SCOPE.TEST))
+  unless (scripts.exist(SCOPE.NAME))
     scripts.newBase ->
-      scripts.link SCOPE.LINK
-      forceRequire scope: SCOPE.TEST, name: dependency, production: true for dependency in SCOPE.DEPENDENCIES
-      scripts.writeModuleFile pkg.name
-      scripts.lift SCOPE.TEST, opts, done
+      scripts.linkModule pkg.name
+      scripts.linkOther 'sailor-module-user'
+      scripts.lift "#{SCOPE.PATH}/#{SCOPE.NAME}", sailsOptions, done
   else
-    scripts.clean "#{SCOPE.TEST}/.tmp/"
-    scripts.lift SCOPE.TEST, opts, done
+    scripts.clean "#{SCOPE.PATH}/#{SCOPE.NAME}/#{SCOPE.TMP}"
+    scripts.lift "#{SCOPE.PATH}/#{SCOPE.NAME}", sailsOptions, done

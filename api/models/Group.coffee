@@ -1,6 +1,7 @@
 ## -- Dependencies -------------------------------------------------------------
 
-sort = require 'sort-keys'
+sailor = require 'sailorjs'
+sort = sailor.util.sortKeys
 
 ## -- Exports -------------------------------------------------------------
 
@@ -8,13 +9,13 @@ module.exports =
   schema: true
 
   attributes:
-    name     : type: 'string', notNull: true
-    summary  : type: 'string', notNull: true
+    name     : type: 'string', unique: true, required: true
+    title    : type: 'string'
+    summary  : type: 'string'
     website  : type: 'string', url: true
     private  : type: 'boolean', defaultsTo: false
 
-    # TODO: type array?
-    tags     : collection: 'string'
+    tags     : type: 'array'
     members  : collection: 'User'
     requests : collection: 'User'
 
