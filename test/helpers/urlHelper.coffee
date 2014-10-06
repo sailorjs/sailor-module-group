@@ -1,14 +1,10 @@
-path = "http://localhost:1337"
+path_name = 'http://localhost:1337/group'
 
 paths =
   # CRUD
-  create:  path + "/en/user"
-  update:  path + "/en/user"
-  find:    path + "/en/user"
-  destroy: path + "/en/user"
-  # CUSTOM
-  session: path + "/en/user/session"
-  login:   path + "/en/user/login"
-  logout:  path + "/en/user/logout"
+  create:  path_name
+  update:  path_name
+  find:    path_name
+  destroy: path_name
 
 module.exports = paths

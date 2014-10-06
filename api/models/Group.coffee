@@ -15,12 +15,20 @@ module.exports =
     website  : type: 'string', url: true
     private  : type: 'boolean', defaultsTo: false
 
-    tags     : type: 'array'
-    members  : collection: 'User'
-    requests : collection: 'User'
+    tags    : type: 'string'
+    user    : collection: 'User'
+    request : collection: 'User'
+
+    getUserCount: ->
+      @user.length
+
+    getRequestCount: ->
+      @request.length
 
     toJSON: (done) ->
       obj = @toObject()
-      delete obj.members
-      delete obj.requests
+      delete obj.user
+      delete obj.request
+      obj.users = @getUserCount()
+      obj.requests = @getRequestCount()
       sort obj

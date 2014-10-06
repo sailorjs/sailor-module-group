@@ -1,5 +1,5 @@
 {
-  "name": "sailor-module-groups",
+  "name": "sailor-module-group",
   "description": "Support create groups between Users",
   "version": "0.0.0",
   "author": {
@@ -7,11 +7,11 @@
     "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
-  "dependencies": {
-    "sort-keys": "*"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "async": "^0.9.0",
     "coffee-script": "*",
+    "force-require": "*",
     "grunt": "*",
     "grunt-contrib-watch": "*",
     "grunt-translate-compile": "git://github.com/sailorjs/translate-compile",
@@ -19,8 +19,7 @@
     "mocha": "*",
     "sailorjs": "git://github.com/sailorjs/sailorjs",
     "should": "*",
-    "superagent": "*",
-    "force-require": "*"
+    "superagent": "*"
   },
   "engines": {},
   "homepage": "",

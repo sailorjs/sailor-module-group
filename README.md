@@ -29,9 +29,7 @@ The minimum information to create a new group is:
 
 ```json
 {
-	name: 'yourGroupName',
-	description: 'yourGroupDescription',
-	admin: `yourAdminID`
+	name: 'yourGroupName'
 }
 ```
 
