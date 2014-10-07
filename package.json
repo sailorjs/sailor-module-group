@@ -25,7 +25,9 @@
   "homepage": "",
   "keywords": [
     "sailor",
-    "module"
+    "module",
+    "user",
+    "group"
   ],
   "license": "MIT",
   "main": "",
