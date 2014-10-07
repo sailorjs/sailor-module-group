@@ -37,41 +37,62 @@ Others attributes can be declares when you create a group. check Group model for
 
 ### Find all group
 
-```
+```http
 GET /group
 ```
 
 ### Find One Group
 
-```
+```http
 GET /group/:id
 ```
 
 You can specified the user that you want to recover in the url by id:
 
-```
-GET /Group/1
+```http
+GET /group/1
 ```
 
 or create a more specified query using url params:
 
-```
-GET /user/?private=true
+```http
+GET /group/?private=true
+GET /group/?private=true?where={"tags":{"contains":"funny"}}
 ```
 
 ### Destroy an Group
 
-```
-DELETE /gropu/:id
+```http
+DELETE /group/:id
 ```
 
 ### Management
 
-### Add new User
+### Add a new User
 
-### Update an User
+```http
+POST group/1/user"
+```
+and send the information about the user, like: 
 
-### Destroy an User
+```json
+{
+	email: "kiko@sailor.com",
+	password: "password"}
+```
+
+### Remove an User
+
+```http
+POST group/1/user"
+```
+and send the information about the user, like: 
+
+```json
+{
+	email: "kiko@sailor.com",
+	password: "password"}
+```
 
 ## License
 
